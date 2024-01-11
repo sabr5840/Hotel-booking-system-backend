@@ -55,5 +55,5 @@ Room Management: How administrators can add, edit, or remove rooms from the syst
 
 ### Project Link
 
-🔗https://github.com/sabr5840/Hotel-booking-eksamen
+🔗 https://github.com/sabr5840/Hotel-booking-system-backend
 
