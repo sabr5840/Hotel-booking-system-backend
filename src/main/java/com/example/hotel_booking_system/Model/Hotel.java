@@ -18,10 +18,11 @@ public class Hotel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int hotelId;
 
-    private String name;
+    private String hotelName;
     private String street;
     private String city;
     private int zip;
+    private int buildingNumber;
     private String country;
     private LocalDateTime created;
     private LocalDateTime updated;
@@ -30,12 +31,13 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
     private List<Room> rooms;
 
-    public Hotel(int hotelId, String name, String street, String city, int zip, String country, LocalDateTime created, LocalDateTime updated, List<Room> rooms) {
+    public Hotel(int hotelId, String hotelName, String street, String city, int zip, int buildingNumber, String country, LocalDateTime created, LocalDateTime updated, List<Room> rooms) {
         this.hotelId = hotelId;
-        this.name = name;
+        this.hotelName = hotelName;
         this.street = street;
         this.city = city;
         this.zip = zip;
+        this.buildingNumber = buildingNumber;
         this.country = country;
         this.created = created;
         this.updated = updated;

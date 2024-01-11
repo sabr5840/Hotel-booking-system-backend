@@ -1,5 +1,6 @@
 package com.example.hotel_booking_system.Model;
 
+import com.example.hotel_booking_system.Enum.RoomType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,8 +22,8 @@ public class Room {
     private int roomNumber;
     private int numberOfBeds;
     private int floor;
-    private String roomType;
-    private int price;
+    private RoomType roomType;
+    private int pricePerNight;
 
     private LocalDateTime created;
     private LocalDateTime updated;
@@ -33,13 +34,13 @@ public class Room {
     @OneToMany(mappedBy = "room", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Reservation> reservations;
 
-    public Room(int roomId, int roomNumber, int numberOfBeds, int floor, String roomType, int price, LocalDateTime created, LocalDateTime updated, Hotel hotel, List<Reservation> reservations) {
+    public Room(int roomId, int roomNumber, int numberOfBeds, int floor, RoomType roomType, int pricePerNight, LocalDateTime created, LocalDateTime updated, Hotel hotel, List<Reservation> reservations) {
         this.roomId = roomId;
         this.roomNumber = roomNumber;
         this.numberOfBeds = numberOfBeds;
         this.floor = floor;
         this.roomType = roomType;
-        this.price = price;
+        this.pricePerNight = pricePerNight;
         this.created = created;
         this.updated = updated;
         this.hotel = hotel;
