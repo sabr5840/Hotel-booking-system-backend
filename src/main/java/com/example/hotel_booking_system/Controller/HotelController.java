@@ -1,6 +1,7 @@
 package com.example.hotel_booking_system.Controller;
 
 import com.example.hotel_booking_system.DTO.HotelDTO;
+import com.example.hotel_booking_system.DTO.RoomDTO;
 import com.example.hotel_booking_system.Model.Hotel;
 import com.example.hotel_booking_system.Model.Room;
 import com.example.hotel_booking_system.Service.HotelService;
@@ -28,25 +29,13 @@ public class HotelController {
         this.hotelService = hotelService;
         this.roomService = roomService;
     }
-/*
-    @PostMapping("/create")
-    public ResponseEntity<?> addHotel(@RequestBody Hotel hotel) {
-        try {
-            Hotel newHotel = hotelService.createHotel(hotel);
-            return new ResponseEntity<>(newHotel, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>("Error creating hotel: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 
- */
 
     @PostMapping("/create")
     public ResponseEntity<Hotel> createHotel(@RequestBody HotelDTO hotelDTO) {
         Hotel newHotel = hotelService.createHotel(hotelDTO);
         return ResponseEntity.ok(newHotel);
     }
-
 
 
     @GetMapping("/all")
@@ -88,11 +77,17 @@ public class HotelController {
         return new ResponseEntity<>(hotels, HttpStatus.OK);
     }
 
+
     @PostMapping("/{hotelId}/rooms")
-    public ResponseEntity<Room> addRoomToHotel(@PathVariable int hotelId, @RequestBody Room room) {
-        Room newRoom = roomService.addRoomToHotel(hotelId, room);
-        return new ResponseEntity<>(newRoom, HttpStatus.CREATED);
+    public ResponseEntity<Room> addRoomToHotel(@PathVariable int hotelId, @RequestBody RoomDTO roomDTO) {
+        Room newRoom = roomService.addRoomToHotel(hotelId, roomDTO);
+        if (newRoom == null) {
+            // Handle the case where the hotel is not found
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(newRoom);
     }
+
 
 
 

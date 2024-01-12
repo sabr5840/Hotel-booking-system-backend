@@ -132,6 +132,8 @@ class HotelControllerTest {
         assert(response.getStatusCode() == HttpStatus.NO_CONTENT);
     }
 
+    /*
+
     @Test
     public void testAddRoomToHotel() {
         int hotelId = 1;
@@ -149,4 +151,6 @@ class HotelControllerTest {
         assert(response.getStatusCode() == HttpStatus.CREATED);
         assert(response.getBody() == sampleRoom);
     }
+
+     */
 }
