@@ -19,7 +19,7 @@ public class Guest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int guestId;
+    private int id;
 
     private String username;
     private String firstname;
@@ -30,8 +30,8 @@ public class Guest {
     private LocalDateTime created;
     private LocalDateTime updated;
 
-    public Guest(int guestId, String username, String firstname, String lastName, String email, int phoneNumber, LocalDateTime created, LocalDateTime updated) {
-        this.guestId = guestId;
+    public Guest(int id, String username, String firstname, String lastName, String email, int phoneNumber, LocalDateTime created, LocalDateTime updated) {
+        this.id = id;
         this.username = username;
         this.firstname = firstname;
         this.lastName = lastName;

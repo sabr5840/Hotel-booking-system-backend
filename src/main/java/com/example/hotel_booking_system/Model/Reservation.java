@@ -16,7 +16,7 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int reservationId;
+    private int id;
 
     private LocalDate reservationStart;
     private LocalDate reservationEnd;
@@ -33,8 +33,8 @@ public class Reservation {
     @ManyToOne
     private Room room;
 
-    public Reservation(int reservationId, LocalDate reservationStart, LocalDate reservationEnd, LocalDateTime created, LocalDateTime updated, Guest guest, Room room) {
-        this.reservationId = reservationId;
+    public Reservation(int id, LocalDate reservationStart, LocalDate reservationEnd, LocalDateTime created, LocalDateTime updated, Guest guest, Room room) {
+        this.id = id;
         this.reservationStart = reservationStart;
         this.reservationEnd = reservationEnd;
         this.created = created;

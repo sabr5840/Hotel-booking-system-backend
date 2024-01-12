@@ -17,7 +17,7 @@ public class Room {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int roomId;
+    private int id;
 
     private int roomNumber;
     private int numberOfBeds;
@@ -34,8 +34,8 @@ public class Room {
     @OneToMany(mappedBy = "room", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Reservation> reservations;
 
-    public Room(int roomId, int roomNumber, int numberOfBeds, int floor, RoomType roomType, int pricePerNight, LocalDateTime created, LocalDateTime updated, Hotel hotel, List<Reservation> reservations) {
-        this.roomId = roomId;
+    public Room(int id, int roomNumber, int numberOfBeds, int floor, RoomType roomType, int pricePerNight, LocalDateTime created, LocalDateTime updated, Hotel hotel, List<Reservation> reservations) {
+        this.id = id;
         this.roomNumber = roomNumber;
         this.numberOfBeds = numberOfBeds;
         this.floor = floor;

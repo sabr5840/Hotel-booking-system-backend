@@ -22,7 +22,6 @@ public class DataGenerator implements CommandLineRunner {
     HotelRepo hotelRepo;
     ReservationRepo reservationRepo;
     RoomRepo roomRepo;
-    RoomType roomType;
 
     public DataGenerator(GuestRepo guestRepo, HotelRepo hotelRepo, ReservationRepo reservationRepo, RoomRepo roomRepo) {
         this.guestRepo = guestRepo;
@@ -46,8 +45,8 @@ public class DataGenerator implements CommandLineRunner {
         //Random class provides different methods to generate random numbers of different data types
         Random random = new Random();
 
-        //Number of hotels in each batch (Ensuring better performance using batch operations)
-        int batchSize = 50;
+        //Number of hotels in each batch (Ensuring better performance using batch operations) - 25 hotels generated in one batch
+        int batchSize = 10;
 
         //loop runs 250 times to create 250 hotels.
         for (int i = 0; i < 250; i += batchSize) {
