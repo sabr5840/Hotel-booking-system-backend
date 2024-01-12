@@ -9,18 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Service
 public class HotelService {
 
     private final ModelMapper modelMapper;
-    private HotelRepo hotelRepo;
+    private final HotelRepo hotelRepo;
 
 
     @Autowired
@@ -29,11 +27,20 @@ public class HotelService {
         this.modelMapper = modelMapper;
     }
 
-    public Hotel createHotel(Hotel hotel) {
+    public Hotel createHotel(HotelDTO hotelDTO) {
+        Hotel hotel = new Hotel();
+        hotel.setHotelName(hotelDTO.getHotelName());
+        hotel.setStreet(hotelDTO.getStreet());
+        hotel.setCity(hotelDTO.getCity());
+        hotel.setZip(hotelDTO.getZip());
+        hotel.setBuildingNumber(hotelDTO.getBuildingNumber());
+        hotel.setCountry(hotelDTO.getCountry());
         hotel.setCreated(LocalDateTime.now());
         hotel.setUpdated(LocalDateTime.now());
         return hotelRepo.save(hotel);
     }
+
+
 
     public Page<HotelDTO> findAllHotels(Pageable pageable) {
         return hotelRepo.findAll(pageable)

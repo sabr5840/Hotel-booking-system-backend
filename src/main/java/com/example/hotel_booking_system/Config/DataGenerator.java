@@ -11,17 +11,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 @Component
 public class DataGenerator implements CommandLineRunner {
 
-    GuestRepo guestRepo;
-    HotelRepo hotelRepo;
-    ReservationRepo reservationRepo;
-    RoomRepo roomRepo;
+    final GuestRepo guestRepo;
+    final HotelRepo hotelRepo;
+    final ReservationRepo reservationRepo;
+    final RoomRepo roomRepo;
 
     public DataGenerator(GuestRepo guestRepo, HotelRepo hotelRepo, ReservationRepo reservationRepo, RoomRepo roomRepo) {
         this.guestRepo = guestRepo;
@@ -30,17 +28,17 @@ public class DataGenerator implements CommandLineRunner {
         this.roomRepo = roomRepo;
     }
 
-    String[] prefixesHotelName = {"Royal", "Grand", "Pearl", "Emerald", "Sunset", "Riverside", "Mountain", "Golden", "Silver", "Crystal", "Ocean", "Garden", "Sky", "Star", "Moonlight"};
-    String[] suffixesHotelName = {"Inn", "Hotel", "Lodge", "Resort", "Villa", "Place", "Palace", "Mansion", "Retreat", "Bungalow", "Hostel", "Suite", "Hideaway", "Haven", "Castle"};
+    final String[] prefixesHotelName = {"Royal", "Grand", "Pearl", "Emerald", "Sunset", "Riverside", "Mountain", "Golden", "Silver", "Crystal", "Ocean", "Garden", "Sky", "Star", "Moonlight"};
+    final String[] suffixesHotelName = {"Inn", "Hotel", "Lodge", "Resort", "Villa", "Place", "Palace", "Mansion", "Retreat", "Bungalow", "Hostel", "Suite", "Hideaway", "Haven", "Castle"};
 
-    String[] streetNames = {"Maple", "Oak", "Pine", "Elm", "Cedar", "Birch", "Willow", "Aspen", "Holly", "Juniper", "Magnolia", "Walnut", "Spruce", "Chestnut", "Poplar"};
-    String[] cityNames = {"Springfield", "Rivertown", "Greenville", "Fairview", "Lakewood", "Sunnydale", "Hillcrest", "Rockville", "Meadowbrook", "Westwood", "Kingsport", "Brookdale", "Harborview", "Clearwater", "Rosewood"};
-    String[] countryNames = {"Freedonia", "Atlantis", "Ruritania", "Eldorado", "Ivalice", "Narnia", "Gondor", "Asgard", "Wakanda", "Zembla", "Genovia", "Latveria", "Pandora", "Kyrat", "Arstotzka"};
+    final String[] streetNames = {"Maple", "Oak", "Pine", "Elm", "Cedar", "Birch", "Willow", "Aspen", "Holly", "Juniper", "Magnolia", "Walnut", "Spruce", "Chestnut", "Poplar"};
+    final String[] cityNames = {"Springfield", "Rivertown", "Greenville", "Fairview", "Lakewood", "Sunnydale", "Hillcrest", "Rockville", "Meadowbrook", "Westwood", "Kingsport", "Brookdale", "Harborview", "Clearwater", "Rosewood"};
+    final String[] countryNames = {"Freedonia", "Atlantis", "Ruritania", "Eldorado", "Ivalice", "Narnia", "Gondor", "Asgard", "Wakanda", "Zembla", "Genovia", "Latveria", "Pandora", "Kyrat", "Arstotzka"};
 
-    RoomType[] roomTypes = RoomType.values();
+    final RoomType[] roomTypes = RoomType.values();
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
         // Random class provides different methods to generate random numbers of different data types
         Random random = new Random();

@@ -13,8 +13,6 @@ import org.springframework.http.HttpStatus;
         import org.springframework.http.ResponseEntity;
         import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -22,20 +20,34 @@ import java.util.List;
 @RequestMapping("/hotels")
 public class HotelController {
 
-    private HotelService hotelService;
-    private RoomService roomService;
+    private final HotelService hotelService;
+    private final RoomService roomService;
 
     @Autowired
     public HotelController(HotelService hotelService, RoomService roomService) {
         this.hotelService = hotelService;
         this.roomService = roomService;
     }
+/*
+    @PostMapping("/create")
+    public ResponseEntity<?> addHotel(@RequestBody Hotel hotel) {
+        try {
+            Hotel newHotel = hotelService.createHotel(hotel);
+            return new ResponseEntity<>(newHotel, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error creating hotel: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+ */
 
     @PostMapping("/create")
-    public ResponseEntity<Hotel> addHotel(@RequestBody Hotel hotel) {
-        Hotel newHotel = hotelService.createHotel(hotel);
-        return new ResponseEntity<>(newHotel, HttpStatus.CREATED);
+    public ResponseEntity<Hotel> createHotel(@RequestBody HotelDTO hotelDTO) {
+        Hotel newHotel = hotelService.createHotel(hotelDTO);
+        return ResponseEntity.ok(newHotel);
     }
+
+
 
     @GetMapping("/all")
     public ResponseEntity<Page<HotelDTO>> getAllHotels(

@@ -1,7 +1,8 @@
 package com.example.hotel_booking_system.DTO;
 
-import java.time.LocalDateTime;
+import lombok.Getter;
 
+@Getter
 public class HotelDTO {
 
     private int id;
@@ -12,56 +13,28 @@ public class HotelDTO {
     private int buildingNumber;
     private String country;
 
-    public int getId() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getHotelName() {
-        return hotelName;
     }
 
     public void setHotelName(String hotelName) {
         this.hotelName = hotelName;
     }
 
-    public String getStreet() {
-        return street;
-    }
-
     public void setStreet(String street) {
         this.street = street;
-    }
-
-    public String getCity() {
-        return city;
     }
 
     public void setCity(String city) {
         this.city = city;
     }
 
-    public int getZip() {
-        return zip;
-    }
-
     public void setZip(int zip) {
         this.zip = zip;
     }
 
-    public int getBuildingNumber() {
-        return buildingNumber;
-    }
-
     public void setBuildingNumber(int buildingNumber) {
         this.buildingNumber = buildingNumber;
-    }
-
-    public String getCountry() {
-        return country;
     }
 
     public void setCountry(String country) {

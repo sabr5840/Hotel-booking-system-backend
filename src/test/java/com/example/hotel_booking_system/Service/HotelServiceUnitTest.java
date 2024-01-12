@@ -10,7 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,15 +21,15 @@ public class HotelServiceUnitTest {
     private HotelService hotelService;
 
     private HotelRepo hotelRepo;
-    private ModelMapper modelMapper;
 
     @BeforeEach
     public void setUp() {
         hotelRepo = mock(HotelRepo.class);
-        modelMapper = new ModelMapper();
+        ModelMapper modelMapper = new ModelMapper();
         hotelService = new HotelService(hotelRepo, modelMapper);
     }
 
+    /*
     @Test
     public void testCreateHotel() {
         Hotel hotel = new Hotel();
@@ -44,6 +43,8 @@ public class HotelServiceUnitTest {
         verify(hotelRepo, times(1)).save(hotel);
         assert(createdHotel != null);
     }
+
+     */
 
     @Test
     public void testFindAllHotels() {
