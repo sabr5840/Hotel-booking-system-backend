@@ -46,6 +46,10 @@ public class Hotel {
         this.updated = updated;
         this.rooms = rooms;
     }
+
+
+    public Hotel(int i, String s, String s1, String s2, int i1, int i2, String s3) {
+    }
 }
 
 
