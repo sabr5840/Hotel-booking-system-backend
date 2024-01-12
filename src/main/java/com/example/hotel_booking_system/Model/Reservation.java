@@ -1,5 +1,6 @@
 package com.example.hotel_booking_system.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,9 +29,11 @@ public class Reservation {
     private LocalDateTime updated;
 
     @ManyToOne
+    @JsonManagedReference
     private Guest guest;
 
     @ManyToOne
+    @JsonManagedReference
     private Room room;
 
     public Reservation(int id, LocalDate reservationStart, LocalDate reservationEnd, LocalDateTime created, LocalDateTime updated, Guest guest, Room room) {

@@ -1,6 +1,7 @@
 package com.example.hotel_booking_system.Model;
 
 import com.example.hotel_booking_system.Enum.RoomType;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,9 +30,11 @@ public class Room {
     private LocalDateTime updated;
 
     @ManyToOne
+    @JsonManagedReference
     private Hotel hotel;
 
     @OneToMany(mappedBy = "room", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonManagedReference
     private List<Reservation> reservations;
 
     public Room(int id, int roomNumber, int numberOfBeds, int floor, RoomType roomType, int pricePerNight, LocalDateTime created, LocalDateTime updated, Hotel hotel, List<Reservation> reservations) {

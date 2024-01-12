@@ -2,8 +2,10 @@ package com.example.hotel_booking_system.Controller;
 
 import com.example.hotel_booking_system.DTO.HotelDTO;
 import com.example.hotel_booking_system.Model.Hotel;
-        import com.example.hotel_booking_system.Service.HotelService;
-        import org.springframework.beans.factory.annotation.Autowired;
+import com.example.hotel_booking_system.Model.Room;
+import com.example.hotel_booking_system.Service.HotelService;
+import com.example.hotel_booking_system.Service.RoomService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -21,10 +23,12 @@ import java.util.List;
 public class HotelController {
 
     private HotelService hotelService;
+    private RoomService roomService;
 
     @Autowired
-    public HotelController(HotelService hotelService) {
+    public HotelController(HotelService hotelService, RoomService roomService) {
         this.hotelService = hotelService;
+        this.roomService = roomService;
     }
 
     @PostMapping("/create")
@@ -49,11 +53,13 @@ public class HotelController {
         return new ResponseEntity<>(hotel, HttpStatus.OK);
     }
 
+
     @PutMapping("/update/{id}")
     public ResponseEntity<Hotel> updateHotel(@PathVariable int id, @RequestBody Hotel hotelDetails) {
         Hotel updatedHotel = hotelService.updateHotel(id, hotelDetails);
         return new ResponseEntity<>(updatedHotel, HttpStatus.OK);
     }
+
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<HttpStatus> deleteHotel(@PathVariable int id) {
@@ -68,6 +74,12 @@ public class HotelController {
                                                     @RequestParam(required = false) String city) {
         List<Hotel> hotels = hotelService.searchHotels(hotelName, id, country, city);
         return new ResponseEntity<>(hotels, HttpStatus.OK);
+    }
+
+    @PostMapping("/{hotelId}/rooms")
+    public ResponseEntity<Room> addRoomToHotel(@PathVariable int hotelId, @RequestBody Room room) {
+        Room newRoom = roomService.addRoomToHotel(hotelId, room);
+        return new ResponseEntity<>(newRoom, HttpStatus.CREATED);
     }
 
 

@@ -4,12 +4,21 @@ import java.time.LocalDateTime;
 
 public class HotelDTO {
 
+    private int id;
     private String hotelName;
     private String street;
     private String city;
     private int zip;
     private int buildingNumber;
     private String country;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getHotelName() {
         return hotelName;
@@ -59,13 +68,21 @@ public class HotelDTO {
         this.country = country;
     }
 
-    public HotelDTO(String hotelName, String street, String city, int zip, int buildingNumber, String country) {
+    // Parameterized constructor
+    public HotelDTO(int id, String hotelName, String street, String city, int zip, int buildingNumber, String country) {
+        this.id = id;
         this.hotelName = hotelName;
         this.street = street;
         this.city = city;
         this.zip = zip;
         this.buildingNumber = buildingNumber;
         this.country = country;
+    }
+
+    // No-argument constructor
+    public HotelDTO() {
+        // This constructor is intentionally empty and can be used by frameworks
+        // that require a no-argument constructor
     }
 
 }
